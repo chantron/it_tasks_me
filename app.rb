@@ -33,7 +33,7 @@ get '/edit/:id' do
 	@update_task = Task.get( params[:id] )
 	@update_task.update( :finished => params[:finished] )
 
-	"Saved!" if @update_task.saved?
+	"This shall task you no longer." if @update_task.saved?
 end
 
 post '/edit/:id' do
@@ -41,7 +41,21 @@ post '/edit/:id' do
 	@update_task = Task.get( params[:id] )
 	@update_task.update( :finished => params[:finished] )
 
-	"Saved!" if @update_task.saved?
+	@finished = params[:finished]
+
+	if @finished == true && @update_task.saved? then 
+		puts "Finished? #{@finished}. Updated? #{@update_task.saved?}"
+		"This shall task you no longer."
+
+	elsif @finished == false && @update_task.saved? then
+		puts "Finished? #{@finished}. Updated? #{@update_task.saved?}"
+		"This shall plague you for eternity."
+
+	else
+		puts "ELSE: Finished? #{@finished}. Updated? #{@update_task.saved?}"
+		"Finished? #{@finished}. Updated? #{@update_task.saved?}"
+
+	end
 end
 
 # Models

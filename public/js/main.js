@@ -18,10 +18,19 @@ $(document).ready(function() {
 
 			$('div[data-task-id="' + task_id + '"]').append(
 				'<button class="pure-button pure-button-success" data-task-id="' + task_id + '">' + msg + '</button>'
-			)
+			);
+			
+
+			if ( finished_value === true ) {
+				$('div[data-task-id="' + task_id + '"]').parent().clone().appendTo("#completed_tasks");
+				$('#completed_tasks div div[data-task-id="' + task_id + '"]').parent().delay( 1200 ).fadeOut( 300 );
+			}
+			else {
+				$('div[data-task-id="' + task_id + '"]').parent().clone().appendTo("#current_tasks");
+				$('#completed_tasks div div[data-task-id="' + task_id + '"]').parent().delay( 1200 ).fadeOut( 300 );
+			}
+
 			$('button[data-task-id="' + task_id + '"]').delay( 900 ).fadeOut();
-			//$('div[data-task-id="' + task_id + '"]').parent().contents().appendTo("#completed_tasks");
-			//$('div[data-task-id="' + task_id + '"]').parent().fadeOut( 300 );
 		});
 	});
 
