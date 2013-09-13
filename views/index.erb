@@ -17,22 +17,61 @@
 		</form>
 	</div>
 </div>
-<div class="pure-g-r">
+<div class="pure-g-r" id="current_tasks">
 	<div class="pure-u-1">
-		
+	<h1>This... THIS is what Tasks me</h1>
 	</div>
 	<% @tasks.each do | task |%>
-		<div class="pure-u-1-3">
-			<div class="single-task">
-				<h2><%= task.title %></h2>
-				<p><%= task.description %></p>
-				<form class="pure-form">
-					<label for="finished" class="pure-checkbox" >
-						<small>Does is task you further? <input type="checkbox" name="finished" /></small>
-					</label>
-				</form>
+		<% if task.finished.nil? || task.finished == false %>
+			<div class="pure-u-1-3">
+				<div class="single-task" data-task-id="<%= task.id %>">
+					<h2><%= task.title %></h2>
+					<p><%= task.description %></p>
+
+					<form class="pure-form single-task-form" data-task-id="<%= task.id %>">
+						<label for="finished" class="pure-radio" >
+							<small>Eternally...</small>
+						</label>
+						<input class="pure-button-error" type="radio" name="finished" value="false" <% if task.finished == false %> checked="checked" <% end %> />
+
+						<label for="finished" class="pure-radio">
+							<small>NAY</small>
+						</label>
+						<input type="radio" class="pure-button-success" name="finished" value="true" <% if task.finished == true %> checked="checked" <% end %>/>
+					</form>
+
+					<small><em>created at: <%= task.created_at.strftime('%I:%M%p %m.%d.%Y') %></em></small>
+				</div>
 			</div>
-		</div>
+		<% end %>
 	<% end %>
-	
+</div>
+<div class="pure-g-r" id="completed_tasks">
+	<div class="pure-u-1">
+	<h1>This tasks me no longer. &#9660;</button></h1>
+	</div>
+	<% @tasks.each do | task |%>
+		<% if task.finished == true %>
+			<div class="pure-u-1-3">
+				<div class="single-task" data-task-id="<%= task.id %>">
+					<h2><%= task.title %></h2>
+					<p><%= task.description %></p>
+
+					<form class="pure-form single-task-form" data-task-id="<%= task.id %>">
+						<label for="finished" class="pure-radio" >
+							<small>Eternally...</small>
+						</label>
+						<input class="pure-button-error" type="radio" name="finished" value="false" <% if task.finished == false %> checked="checked" <% end %> />
+
+						<label for="finished" class="pure-radio">
+							<small>NAY</small>
+						</label>
+						<input type="radio" class="pure-button-success" name="finished" value="true" <% if task.finished == true %> checked="checked" <% end %>/>
+					</form>
+
+					<small><em>created at: <%= task.created_at.strftime('%I:%M%p %m.%d.%Y') %></em></small>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
 </div>

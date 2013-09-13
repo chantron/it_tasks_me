@@ -1,13 +1,29 @@
-body {
-	background: url('../img/old_wall.png');
-}
 
+/* Pure CSS Tweaks */
 .pure-g [class *= "pure-u"] h1,
 .pure-g-r [class *= "pure-u"] h1,
 .pure-g [class *= "pure-u"] h2,
 .pure-g-r [class *= "pure-u"] h2 {
     /* Set you're content font stack here: */
     font-family: 'IM Fell Great Primer SC', serif;
+}
+
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pure-button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+/* Main Application CSS */
+body {
+	background: url('../img/old_wall.png');
 }
 
 div#wrapper {
@@ -31,7 +47,12 @@ div#wrapper {
 		border: 1px solid #ccc; 
 		padding: 10px;
 		margin: 10px;
+		box-shadow: inset 0 0 .5em #ccc;
 	}
 		div.single-task h2 {
 			margin-top: 0px;
+		}
+
+		button.toggle-button {
+			display: inline;
 		}

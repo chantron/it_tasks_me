@@ -12,19 +12,36 @@ $app_name = "What Tasks You?"
 
 get '/' do
 	@title = "All Tasks"
-	@tasks = Task.all
+	@tasks = Task.all(:order => [ :created_at.desc ])
 
 	erb :index
 end
 
 post '/' do
-	new_task = Task.new
-		new_task.title = params[:title]
-		new_task.description = params[:description]
-		new_task.created_at = Time.now
-	new_task.save
+	@new_task = Task.new
+		@new_task.title = params[:title]
+		@new_task.description = params[:description]
+		@new_task.created_at = Time.now
+		@new_task.finished = false
+	@new_task.save
 
 	redirect '/'
+end
+
+get '/edit/:id' do
+
+	@update_task = Task.get( params[:id] )
+	@update_task.update( :finished => params[:finished] )
+
+	"Saved!" if @update_task.saved?
+end
+
+post '/edit/:id' do
+
+	@update_task = Task.get( params[:id] )
+	@update_task.update( :finished => params[:finished] )
+
+	"Saved!" if @update_task.saved?
 end
 
 # Models
