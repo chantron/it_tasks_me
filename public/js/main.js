@@ -20,8 +20,8 @@ $(document).ready(function() {
 				'<button class="pure-button pure-button-success" data-task-id="' + task_id + '">' + msg + '</button>'
 			)
 			$('button[data-task-id="' + task_id + '"]').delay( 900 ).fadeOut();
-			$('div[data-task-id="' + task_id + '"]').parent().contents().appendTo("#completed_tasks");
-			$('div[data-task-id="' + task_id + '"]').parent().fadeOut( 300 );
+			//$('div[data-task-id="' + task_id + '"]').parent().contents().appendTo("#completed_tasks");
+			//$('div[data-task-id="' + task_id + '"]').parent().fadeOut( 300 );
 		});
 	});
 
