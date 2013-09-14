@@ -31,7 +31,7 @@
             <div id="content">
                 <header id="header">
                     <div class="row">
-                        <div class="large-12 columns">
+                        <div class="large-1 columns">
                             <h1>What tasks you?</h1>
                         </div>
                     </div>

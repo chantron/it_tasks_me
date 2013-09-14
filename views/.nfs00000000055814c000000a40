@@ -14,7 +14,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css"> 
-        <link rel="stylesheet" href="css/foundation.min.css"> 
+        <link rel="stylesheet" href="css/foundation-min.css"> 
         <link rel="stylesheet" href="css/app.css">
 
         <link href='http://fonts.googleapis.com/css?family=Volkhov:400,700|IM+Fell+Great+Primer+SC' rel='stylesheet' type='text/css'>
@@ -31,7 +31,7 @@
             <div id="content">
                 <header id="header">
                     <div class="row">
-                        <div class="large-12 columns">
+                        <div class="large-1 columns">
                             <h1>What tasks you?</h1>
                         </div>
                     </div>

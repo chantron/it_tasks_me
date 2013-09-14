@@ -31,7 +31,7 @@ end
 get '/edit/:id' do
 
 	@update_task = Task.get( params[:id] )
-	@update_task.update( :finished => params[:finished] )
+	@update_task.update( :finished => params[:finished], :finished_at => Time.now )
 
 	"This shall task you no longer." if @update_task.saved?
 end
@@ -40,14 +40,15 @@ post '/edit/:id' do
 
 	@update_task = Task.get( params[:id] )
 	@update_task.update( :finished => params[:finished] )
+	@update_task.update( :finished => params[:finished], :finished_at => Time.now )
 
 	@finished = params[:finished]
 
-	if @finished == true && @update_task.saved? then 
+	if @finished == 'true' && @update_task.saved? then 
 		puts "Finished? #{@finished}. Updated? #{@update_task.saved?}"
 		"This shall task you no longer."
 
-	elsif @finished == false && @update_task.saved? then
+	elsif @finished == 'false' && @update_task.saved? then
 		puts "Finished? #{@finished}. Updated? #{@update_task.saved?}"
 		"This shall plague you for eternity."
 

@@ -1,24 +1,19 @@
 
-/* Pure CSS Tweaks */
-.pure-g [class *= "pure-u"] h1,
-.pure-g-r [class *= "pure-u"] h1,
-.pure-g [class *= "pure-u"] h2,
-.pure-g-r [class *= "pure-u"] h2 {
+/* Foundation CSS Tweaks */
+h1,
+h1,
+h2,
+h2,
+h3,
+h3,
+h4,
+h4 {
     /* Set you're content font stack here: */
     font-family: 'IM Fell Great Primer SC', serif;
 }
 
-.pure-button-success,
-.pure-button-error,
-.pure-button-warning,
-.pure-button-secondary {
-    color: white;
-    border-radius: 4px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-.pure-button-success {
-    background: rgb(28, 184, 65); /* this is a green */
+[class*="column"] + [class*="column"]:last-child {
+    float: left;
 }
 
 /* Main Application CSS */
@@ -34,6 +29,22 @@ div#wrapper {
 	div#content {
 		color: #1D1D1D;
 
+	}
+
+	header#header {
+		background: url('../img/khan.jpg');
+		background-size: cover;
+		background-position: 0 -175px;
+		box-shadow: 0 0 .5em #2B2B2B;
+		height: 200px;
+	}
+	header h1 {
+		color: #FFFFFF;
+		position: relative;
+		top: 40px;
+		font-size: 300%;
+		text-transform: uppercase;
+		letter-spacing: -5px;
 	}
 
 	h1.task-title {

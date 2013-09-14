@@ -1,6 +1,6 @@
 
 <div class="row">
-	<div class="large-12 columns">
+	<div class="large-1 columns">
 		<form class="pure-form" method="post">
 			<fieldset class="pure-group">
 				<input type="text" class="pure-input-1" name="title" placeholder="Task title" />
@@ -13,16 +13,15 @@
 		</form>
 	</div>
 </div>
-<div class="row">
+<div class="row" id="current_tasks">
 	<div class="row">
-		<div class="large-12 columns">
+		<div class="large-1 columns">
 			<h1>This... THIS is what Tasks me</h1>
 		</div>
 	</div>
-	<div class="row collapse" id="current_tasks">
 	<% @tasks.each do | task |%>
 		<% if task.finished.nil? || task.finished == false %>
-			<div class="large-4 columns collapse">
+			<div class="large-3 columns">
 				<div class="single-task" data-task-id="<%= task.id %>">
 					<h2><%= task.title %></h2>
 					<p><%= task.description %></p>
@@ -44,18 +43,17 @@
 			</div>
 		<% end %>
 	<% end %>
-	</div>
 </div>
-<div class="row">
+<div class="row" id="completed_tasks">
 	<div class="row">
-		<div class="large-12 columns">
+		<div class="large-1 columns">
 		<h1>This tasks me no longer</h1>
 		</div>
 	</div>
-	<div class="row collapse" id="completed_tasks">
+	<div class="row">
 	<% @tasks.each do | task |%>
 		<% if task.finished == true %>
-			<div class="large-4 columns">
+			<div class="large-3 columns">
 				<div class="single-task" data-task-id="<%= task.id %>">
 					<h2><%= task.title %></h2>
 					<p><%= task.description %></p>

@@ -2,10 +2,10 @@ $(document).ready(function() {
 
 	$('form.single-task-form input').change(function(){
 
-		var task_id = $(this).parent().data('task-id')
-		var finished_value = $(this).attr('value')
+		var task_id = $(this).parent().data('task-id');
+		var finished_value = $(this).attr('value');
 
-		console.log(finished_value);
+		
 		console.log(task_id);
 
 		$.ajax({
@@ -14,23 +14,55 @@ $(document).ready(function() {
 			data: { finished: finished_value }
 			}).done(function( msg ) {
 			
-			console.log($('div').data('task-id', task_id));
 
-			$('div[data-task-id="' + task_id + '"]').append(
-				'<button class="pure-button pure-button-success" data-task-id="' + task_id + '">' + msg + '</button>'
-			);
-			
+			var original_div = $('div[data-task-id="' + task_id + '"]');
 
-			if ( finished_value === true ) {
-				$('div[data-task-id="' + task_id + '"]').parent().clone().appendTo("#completed_tasks");
-				$('#completed_tasks div div[data-task-id="' + task_id + '"]').parent().delay( 1200 ).fadeOut( 300 );
+			if ( finished_value === 'true' ) {
+
+				console.log("True!" + finished_value);
+				
+				$(original_div).append(
+					'<button class="pure-button pure-button-success" data-task-id="' + task_id + '">' + msg + '</button>'
+				);
+
+				$('button[data-task-id="' + task_id + '"]').delay( 900 ).fadeOut();
+
+				$(original_div).parent()
+				.delay( 1000 )
+				.fadeOut( 500, function() {
+					$(this)
+					.detach()
+					.appendTo("#completed_tasks")
+					.fadeIn( 300 );
+				});
+
+						
+			}
+			else if ( finished_value === 'false' ) {
+
+				console.log("True!" + finished_value);
+
+				$(original_div).append(
+					'<button class="pure-button pure-button-success" data-task-id="' + task_id + '">' + msg + '</button>'
+				);
+
+				$('button[data-task-id="' + task_id + '"]').delay( 900 ).fadeOut();
+
+				$(original_div).parent()
+				.delay( 1000 )
+				.fadeOut( 500, function() {
+					$(this)
+					.detach()
+					.appendTo("#current_tasks")
+					.fadeIn( 300 );
+				});
+							
 			}
 			else {
-				$('div[data-task-id="' + task_id + '"]').parent().clone().appendTo("#current_tasks");
-				$('#completed_tasks div div[data-task-id="' + task_id + '"]').parent().delay( 1200 ).fadeOut( 300 );
+				alert('ERROR!');
 			}
 
-			$('button[data-task-id="' + task_id + '"]').delay( 900 ).fadeOut();
+			
 		});
 	});
 

@@ -19,7 +19,7 @@
 			<h1>This... THIS is what Tasks me</h1>
 		</div>
 	</div>
-	<div class="row collapse" id="current_tasks">
+	<div class="row" id="current_tasks">
 	<% @tasks.each do | task |%>
 		<% if task.finished.nil? || task.finished == false %>
 			<div class="large-4 columns collapse">
