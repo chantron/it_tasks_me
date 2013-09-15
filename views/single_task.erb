@@ -1,0 +1,35 @@
+<div class="large-4 columns">
+  <div class="single-task" data-task-id="<%= task.id %>">
+    
+    
+    <h2><%= task.title %></h2>
+    <p><%= task.description %></p>
+
+    <form class="single-task-form" data-task-id="<%= task.id %>">
+
+    <h4>Does this task you yet?</h4>
+    <div class="switch small">
+      <input id="finished_no" name="finished" type="radio" value="false" <% if task.finished == false %> checked <% end %> />
+      <label for="finished_no" onclick="">Eternally...</label>
+
+      <input id="finished_yes" name="finished" type="radio" value="true" <% if task.finished == true %> checked <% end %> />
+      <label for="finished_yes" onclick="">Nay... IT IS DONE</label>
+      <span></span>
+    </div>
+
+    </form>
+    
+    <div class="task_time">
+      <small>
+        <em>created at: <%= task.created_at.strftime('%I:%M%p %m.%d.%Y') %></em>
+      </small>
+      <br />
+      <% if !task.finished_at.nil? then %>
+        <small>
+          <em>finished at:  <%= task.finished_at.strftime('%I:%M%p %m.%d.%Y') %></em>
+        </small>
+      <% end %>
+    </div>
+  <%= erb :task_options, :locals => { :task => task } %>
+  </div>
+</div>
