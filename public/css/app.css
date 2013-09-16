@@ -41,7 +41,7 @@ div#wrapper {
 	header h1 {
 		color: #FFFFFF;
 		position: relative;
-		top: 40px;
+		top: 120px;
 		font-size: 300%;
 		text-transform: uppercase;
 		letter-spacing: -5px;
@@ -67,6 +67,10 @@ div#wrapper {
 
 		button.toggle-button {
 			display: inline;
+		}
+		
+		div.new_task_drawer {
+			
 		}
 
 		form#new_task {

@@ -1,16 +1,22 @@
 <i class="settings_icon tiny "></i>
 <div class="task_options">
   <div class="row collapse">
-    <div class="large-12">
+    <div class="large-12 columns">
       <h5>Task Options</h5>
     </div>
   </div>
   <div class="row collapse">
-    <div class="button-group even-2"
-      <ul class="no-bullet">
-        <li><button class="button tiny success">Archive Task</button></li>
-        <li><button class="button secondary tiny">Edit Task</button></li>
-        <li><button class="button tiny alert">Delete Task</button></li>
+    <div class="large-12 columns">
+      <ul class="button-group task_option_list"data-task-id="<%= task.id %>">
+        <li>
+          <button class="archive_task tiny success">Archive Task</button>
+        </li>
+        <li>
+          <button class="edit_task secondary tiny">Edit Task</button>
+        </li>
+        <li>
+          <button class="delete_task tiny alert">Delete Task</button>
+        </li>
       </ul>
     </div>
   </div>

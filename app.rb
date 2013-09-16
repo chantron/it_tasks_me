@@ -45,18 +45,53 @@ post '/edit/:id' do
   @finished = params[:finished]
 
   if @finished == 'true' && @update_task.saved? then 
-
+    puts "This shall task you no longer"
     "This shall task you no longer."
 
   elsif @finished == 'false' && @update_task.saved? then
-
+    puts "This shall plague you for eternity."
     "This shall plague you for eternity."
 
   else
-
+    puts "Finished? #{@finished}. Updated? #{@update_task.saved?}"
     "Finished? #{@finished}. Updated? #{@update_task.saved?}"
 
   end
+
+end
+
+post '/archive/:id' do
+  @archived_task = Task.get( params[:id] )
+  @archived_task.update( :archived => true )
+
+  if @archived_task.saved? then
+
+    "This task has been archived."
+
+  else
+
+    "There was an error"
+
+  end
+
+end
+
+post '/delete/:id' do
+
+  @deleted_task = Task.get( params[:id] )
+  @deleted_task.destroy
+
+  if @deleted_task.destroyed? == true then
+
+    "The task has been deleted."
+
+  else
+
+    "The task was not deleted."
+
+  end
+
+
 end
 
 # Models
@@ -68,9 +103,10 @@ class Task
   property :id, Serial, :key => true
   property :title, String
   property :description, Text
-  property :finished, Boolean
+  property :finished, Boolean, :default => false
   property :created_at, DateTime
   property :finished_at, DateTime
+  property :archived, Boolean, :default => false
 
 end
 
